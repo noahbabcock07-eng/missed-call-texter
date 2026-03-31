@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: missed-call-texter
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: "gunicorn -b 0.0.0.0:$PORT app:app"
+    envVars:
+      - key: TWILIO_ACCOUNT_SID
+      - key: TWILIO_AUTH_TOKEN
+      - key: TWILIO_PHONE_NUMBER
+      - key: FORWARD_TO_NUMBER
+      - key: MISSED_CALL_SMS_MESSAGE
